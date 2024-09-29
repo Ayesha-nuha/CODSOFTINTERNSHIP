@@ -1,0 +1,58 @@
+import random
+
+def game():
+    choices = ["rock", "paper", "scissors"]
+    score_user = 0
+    score_computer = 0
+    rounds = 0
+    
+    print("Welcome to the game of Rock-Paper-Scissors!\n")
+    print("CHOOSE:'rock'or'paper'or 'scissors' to play.\n EXIT to quit\n")
+    
+    while True:
+        choice_user = input("YOUR TURN.CHOOSE FROM ABOVE:\n ").lower()
+        if choice_user == 'EXIT':
+            break
+        if choice_user not in choices:
+            print("Invalid choice!!!.Please choose rock, paper, or scissors.\n")
+            continue
+
+        choice_computer = random.choice(choices)
+        print(f"Computer chose: {choice_computer}")
+       
+        if choice_user == choice_computer:
+            result ="Tie!\n"
+        elif choice_user == "rock":
+            if choice_computer == "scissors":
+                result = "YOU WON!\n"
+                score_user += 1
+            else:
+                result = "YOU LOSE!\n"
+                score_computer += 1
+        elif choice_user == "scissors":
+            if choice_computer == "paper":
+                result = "YOU WON!\n"
+                score_user += 1
+            else:
+                result = "YOU LOSE!\n"
+                score_computer += 1
+        elif choice_user == "paper":
+            if choice_computer == "rock":
+                result = "YOU WON!\n"
+                score_user += 1
+            else:
+                result = "YOU LOSE!\n"
+                score_computer += 1
+
+        rounds += 1
+        print(result)
+        print(f"YOUR SCORE: {score_user}, COMPUTER SCORE: {score_computer}\n")
+        
+        play_again = input("PLAY AGAIN?\n Choose YES / NO:\n").lower()
+        if play_again != 'yes':
+            break
+    
+    print(f"Final Score - You: {score_user}, Computer: {score_computer}\n")
+    print("Thanks for playing!\n")
+
+game()
